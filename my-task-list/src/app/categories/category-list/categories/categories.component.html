@@ -1,0 +1,20 @@
+<p class="text-center text-muted" *ngIf="!categories.length">
+  Sem Categorias
+</p>
+
+<ol class="list-unstyled">
+  <li *ngFor="let cols of rows" class="row no-gutters">
+    <div *ngFor="let category of cols" class="col-4" appDarkOnHover>
+      <a [class]="anchorClass" [routerLink]="['/c', category.id]">
+        <app-category-card
+          [categoryTitle]="category.description"
+          [color]="category.color">
+          <app-category 
+            
+          >
+          </app-category>
+        </app-category-card>
+      </a>
+    </div>
+  </li>
+</ol>

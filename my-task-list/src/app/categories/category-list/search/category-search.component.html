@@ -1,0 +1,19 @@
+<div class="text-center mt-3 mb-3">
+    <form>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <po-input
+                        name="optionLabel"
+                        p-label="Pesquisa"
+                        p-placeholder="Pesquisar..."
+                        p-required
+                        autofocus
+                        (keyup)="debounce.next($event.target.value)">
+                    </po-input>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

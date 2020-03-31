@@ -1,0 +1,117 @@
+<h4 class="po-text-center">{{ pageTitle }}</h4>
+
+<div class="po-row">
+    <div class="po-md-2">
+        
+    </div>
+
+    <div *ngIf="!isEdit || (isEdit && task && options.length > 0)" class="po-md-8">
+        <form #form="ngForm" [formGroup]="taskForm">
+            <div class="po-row">
+                <po-input
+                    #titleInput
+                    autofocus
+                    class="po-md-12"
+                    formControlName="title"
+                    p-clean
+                    p-label="Título da Tarefa">
+                </po-input>
+
+                <app-vmessage 
+                    *ngIf="taskForm.get('title').errors?.required"
+                    text="Título é obrigatório!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="taskForm.get('title').errors?.minlength"
+                    text="Tamaho mínimo é 2!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="taskForm.get('title').errors?.maxlength"
+                    text="Tamaho máximo é 30!">
+                </app-vmessage>
+            </div>
+        
+            <div class="po-row">
+                <po-textarea
+                    class="po-lg-12"
+                    formControlName="description"
+                    p-clean
+                    p-label="Descrição da Tarefa">
+                </po-textarea>
+
+                <app-vmessage 
+                    *ngIf="taskForm.get('description').errors?.required"
+                    text="Descrição é obrigatória!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="taskForm.get('description').errors?.minlength"
+                    text="Tamaho mínimo é 2!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="taskForm.get('description').errors?.maxlength"
+                    text="Tamaho máximo é 300!">
+                </app-vmessage>
+            </div>
+
+            <div class="po-row">
+                <po-datepicker
+                    class="po-lg-12"
+                    formControlName="deadLine"
+                    p-clean
+                    p-label="Data Limite">
+                </po-datepicker>
+
+                <app-vmessage 
+                    *ngIf="taskForm.get('deadLine').errors?.required"
+                    text="Data Limite é obrigatória!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="taskForm.errors?.taskDeadLineValidator"
+                    text="Data Limite não pode ser no passado!">
+                </app-vmessage>
+            </div>
+
+            <div class="po-row">
+                <po-select
+                    class="po-lg-12"
+                    formControlName="category"
+                    name="category"
+                    p-label="Categoria"
+                    [(ngModel)]="category"
+                    [p-options]="options"
+                    (p-change)="changeCategory()">
+                </po-select>
+
+                <app-vmessage 
+                    *ngIf="taskForm.get('category').errors?.required"
+                    text="Categoria é obrigatória!">
+                </app-vmessage>
+            </div>
+
+            <div class="po-row">
+                <po-button
+                    class="po-md-6"
+                    [p-label]="!isEdit ? 'Incluir' : 'Alterar'"
+                    p-type="primary"
+                    [p-disabled]="taskForm.invalid"
+                    (p-click)="upload()">
+                </po-button>
+
+                <po-button
+                    class="po-md-6"
+                    p-label="Cancelar"
+                    (p-click)="clickCancel()">
+                </po-button>
+            </div>
+        </form>
+    </div>
+
+    <div class="po-md-2">
+        
+    </div>
+</div>

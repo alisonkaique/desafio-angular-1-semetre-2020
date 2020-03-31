@@ -1,0 +1,44 @@
+<header class="fixed-top">
+    <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand">
+                <i 
+                    tabindex="0"  
+                    (keyup.space)="menu.toggle()"
+                    (click)="menu.toggle()" 
+                    class="fa fa-bars mr-2">
+                </i>
+                Minha Lista de Tarefas
+        </a>
+
+        <app-menu #menu>
+            <ul class="list-unstyled">
+                <li>
+                    <a showIfLogged [routerLink]="['']">Tarefas</a>
+                </li>
+                <li>
+                    <a showIfLogged [routerLink]="['', 'categories']">Categorias</a>
+                </li>
+                <li>
+                    <a showIfLogged (click)="logout()">Sair</a>
+                </li>
+            </ul>
+        </app-menu>
+        
+        <div *ngIf="(user$ | async) as user; else login">
+            <i class="fa fa-user-circle mr-1"></i>
+            <a class="mr-1">{{ user.name }}</a> 
+            <a (click)="logout()"> (Logout)</a>
+        </div>
+
+        <ng-template #login>
+            <span class="navbar-text">
+                <a [routerLink]="['']">Por favor, efetue login!</a>
+            </span>
+        </ng-template>
+    </nav>
+
+    <div clas="fixed-top">
+        <app-loading></app-loading>
+        <app-alert></app-alert>
+    </div>
+</header>

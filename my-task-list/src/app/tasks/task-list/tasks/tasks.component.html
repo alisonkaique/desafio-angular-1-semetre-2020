@@ -1,0 +1,26 @@
+<p class="text-center text-muted" *ngIf="!tasks.length">
+  Sem Tarefas
+</p>
+
+<ol class="list-unstyled">
+  <li *ngFor="let cols of rows" class="row no-gutters">
+    <div *ngFor="let task of cols" class="col-4" appDarkOnHover>
+      <a [routerLink]="['/t', task.id]">
+        <app-task-card
+          [taskTitle]="task.title"
+          [categoryId]="task.categoryId">
+          <app-task 
+            [status]="getStatus(task.status, task.deadLine)"
+            [category]="task.category"
+          >
+          </app-task>
+  
+          <div class="text-center p-1">
+            <i aria-hidden="true" class="fa fa-clock-o fa-1x mr-2"></i>{{ task.createDate | date:'dd-MM-yyyy' }}
+            <i aria-hidden="true" class="fa fa-calendar-o fa-1x mr-2 ml-2"></i>{{ task.deadLine | date:'dd-MM-yyyy' }}
+          </div>
+        </app-task-card>
+      </a>
+    </div>
+  </li>
+</ol>

@@ -1,0 +1,23 @@
+<po-toolbar
+    p-title="Categorias"
+>
+</po-toolbar>
+
+<app-category-search
+    #search
+    (onTyping)="filter = $event"
+    [value]="filter">
+</app-category-search>
+
+<app-categories
+    [categories]="categories | filterByDescription: filter">
+</app-categories>
+
+<app-load-button 
+    [hasMore]="hasMore"
+    (click)="load()" >
+</app-load-button>
+
+<app-category-footer>
+    
+</app-category-footer>

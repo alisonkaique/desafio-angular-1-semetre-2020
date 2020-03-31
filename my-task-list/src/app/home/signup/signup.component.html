@@ -1,0 +1,145 @@
+<h4 class="po-text-center">Novo Usuário</h4>
+
+<div class="po-row">
+    <div class="po-md-2">
+        
+    </div>
+
+    <div class="po-md-8">
+        <form #form="ngForm" [formGroup]="signUpForm">
+            <div class="po-row">
+                <po-input
+                    #emailInput
+                    class="po-md-12"
+                    formControlName="email"
+                    p-clean
+                    p-label="E-mail">
+                </po-input>
+        
+                <app-vmessage 
+                    *ngIf="signUpForm.get('email').errors?.required"
+                    text="E-mail é obrigatório!">
+                </app-vmessage>
+        
+                <app-vmessage 
+                    *ngIf="signUpForm.get('email').errors?.email"
+                    text="E-mail inválido!">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('email').errors?.lowerCase"
+                    text="Deve conter apenas letras minúsculas">
+                </app-vmessage>
+        
+                <app-vmessage
+                    text="E-mail já cadastrado"
+                    *ngIf="signUpForm.get('email').errors?.userNameTaken">
+                </app-vmessage>
+        
+                <small *ngIf="signUpForm.get('email').valid" class="text-success">E-mail disponível</small>
+            </div>
+        
+            <div class="po-row">
+                <po-input
+                    class="po-md-12"
+                    formControlName="userName"
+                    p-clean
+                    p-label="Nome de Usuário">
+                </po-input>
+        
+                <app-vmessage 
+                    *ngIf="signUpForm.get('userName').errors?.required"
+                    text="Nome de usuário é obrigatório!">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('userName').errors?.minlength"
+                    text="Tamanho mínimo é 2">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('userName').errors?.maxlength"
+                    text="Tamanho máximo é 30">
+                </app-vmessage>
+
+                <app-vmessage
+                    text="Usuário já cadastrado"
+                    *ngIf="signUpForm.get('userName').errors?.userNameTaken">
+                </app-vmessage>
+        
+                <small *ngIf="signUpForm.get('userName').valid" class="text-success">Usuário disponível</small>
+            </div>
+        
+            <div class="po-row">
+                <po-input
+                    class="po-md-12"
+                    formControlName="fullName"
+                    p-clean
+                    p-label="Nome Completo">
+                </po-input>
+        
+                <app-vmessage 
+                    *ngIf="signUpForm.get('fullName').errors?.required"
+                    text="Nome completo é obrigatório!">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('fullName').errors?.minlength"
+                    text="Tamanho mínimo é 2">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('fullName').errors?.maxlength"
+                    text="Tamanho máximo é 40">
+                </app-vmessage>
+            </div>
+        
+            <div class="form-group">
+                <po-password
+                    class="po-md-12"
+                    formControlName="password"
+                    p-clean
+                    p-label="Senha">
+                </po-password>
+        
+                <app-vmessage 
+                    *ngIf="signUpForm.get('password').errors?.required"
+                    text="Senha é obrigatória!">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('password').errors?.minlength"
+                    text="Tamanho mínimo é 8">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.get('password').errors?.maxlength"
+                    text="Tamanho máximo é 14">
+                </app-vmessage>
+        
+                <app-vmessage
+                    *ngIf="signUpForm.errors?.userNamePassword"
+                    text="Nome de Usuário e Senha devem ser diferentes">
+                </app-vmessage>
+            </div>
+
+            <div class="po-row">
+                <po-button
+                    class="po-md-6"
+                    p-label="Registrar"
+                    p-type="primary"
+                    [p-disabled]="signUpForm.invalid"
+                    (p-click)="signUp()">
+                </po-button>
+
+                <po-button
+                    class="po-md-6"
+                    p-label="Cancelar"
+                    (p-click)="clickCancel()">
+                </po-button>
+            </div>
+                
+            <p>Já possui login? <a [routerLink]="['']">Acessar</a></p>
+        </form>
+    </div>
+</div>

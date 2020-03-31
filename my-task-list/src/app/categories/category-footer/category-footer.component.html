@@ -1,0 +1,18 @@
+<footer class="mt-5" *ngIf="(user$ | async) as user">
+    <div class="fixed-bottom bg-white p-1">
+        <div class="container">
+            <div class="row po-text-center">
+                <div class="col-6">
+                    <a [routerLink]="['', 'categories']">
+                        <i class="fa fa-home fa-2x"></i>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a [routerLink]="['/c', 'add']">
+                        <i class="fa fa-plus-circle fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

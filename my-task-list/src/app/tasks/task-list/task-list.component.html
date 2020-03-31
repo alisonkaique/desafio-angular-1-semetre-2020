@@ -1,0 +1,35 @@
+<po-toolbar
+    p-title="Tarefas"
+>
+</po-toolbar>
+
+<app-search
+    #search
+    (onTyping)="filter = $event"
+    (searchType)="searchType"
+    [value]="filter">
+</app-search>
+
+<app-tasks
+    [tasks]="tasks | filterByDescription: filter">
+</app-tasks>
+
+<div class="container">
+    <div class="row">
+    </div>
+
+    <div class="row">
+        <div class="po-md-1"></div>
+        <div class="po-md-7">
+            <app-load-button 
+                [hasMore]="hasMore"
+                (click)="load()" >
+            </app-load-button>
+        </div>
+        <div class="po-md-2"></div>
+    </div>
+
+    <div class="row">
+        <app-task-footer></app-task-footer>        
+    </div>
+</div>

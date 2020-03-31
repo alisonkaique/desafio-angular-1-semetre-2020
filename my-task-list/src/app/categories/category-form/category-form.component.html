@@ -1,0 +1,93 @@
+<h4 class="po-text-center">Nova Categoria</h4>
+
+<div class="po-row">
+    <div class="po-md-2">
+        
+    </div>
+
+    <div class="po-md-8">
+        <form [formGroup]="categoryForm">
+            <div class="po-row">
+                <po-input
+                    #descriptionInput
+                    autofocus
+                    class="po-md-12"
+                    formControlName="description"
+                    p-clean
+                    p-label="Descrição da Categoria">
+                </po-input>
+
+                <app-vmessage 
+                    *ngIf="categoryForm.get('description').errors?.required"
+                    text="Descrição é obrigatória!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="categoryForm.get('description').errors?.minlength"
+                    text="Tamaho mínimo é 2!">
+                </app-vmessage>
+
+                <app-vmessage
+                    *ngIf="categoryForm.get('description').errors?.maxlength"
+                    text="Tamaho máximo é 30!">
+                </app-vmessage>
+
+                <app-vmessage
+                    text="Categoria já cadastrada"
+                    *ngIf="categoryForm.get('description').errors?.categoryTaken">
+                </app-vmessage>
+
+                <small *ngIf="categoryForm.get('description').valid" class="text-success">Descrição disponível</small>
+            </div>
+        
+            <div class="po-row">
+                <po-select
+                    class="po-lg-12"
+                    formControlName="color"
+                    name="color"
+                    p-label="Cor"
+                    [(ngModel)]="color"
+                    [p-options]="options"
+                    (p-change)="changeColor()">
+
+                    <ng-template p-select-option-template let-option>
+                            <div>
+                                <po-tag
+                                    p-value="COR"
+                                    [p-color]="option.value.substr(03)">
+                                </po-tag>
+                                
+                                <span class="sample-menu-circle sample-menu-vertical-middle {{ option.value }}"></span>
+                                <span class="sample-menu-vertical-middle"> {{ option.label }} </span>
+                            </div>
+                    </ng-template>
+                </po-select>
+
+                <app-vmessage 
+                    *ngIf="categoryForm.get('color').errors?.required"
+                    text="Cor é obrigatória!">
+                </app-vmessage>
+            </div>
+
+            <div class="po-row">
+                <po-button
+                    class="po-md-6"
+                    p-label="Incluir"
+                    p-type="primary"
+                    [p-disabled]="categoryForm.invalid"
+                    (p-click)="upload()">
+                </po-button>
+
+                <po-button
+                    class="po-md-6"
+                    p-label="Cancelar"
+                    (p-click)="clickCancel()">
+                </po-button>
+            </div>
+        </form>
+    </div>
+
+    <div class="po-md-2">
+        
+    </div>
+</div>
