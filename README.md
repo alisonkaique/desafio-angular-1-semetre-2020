@@ -22,12 +22,14 @@ Abaixo relação de diretorios:
 Antes de utilizar a aplicação 'Minha Lista de Tarefas' é necessário que as dependências sejam instaladas, tanto para a API quanto para a aplicação principal.
 Por isso iremos efetuar a instalação das dependências em cada aplicação uma a uma.
 
-* API
+API
+
 * Acessar o terminal / prompt de comandos no diretório /api-my-task-list/
 * Executar o comando 'npm install'
 * Aguardar o término da instalação das dependências
 
-* Aplicação 'Minha Lista de Tarefas'
+Aplicação 'Minha Lista de Tarefas'
+
 * Acessar o terminal / prompt de comandos no diretório /my-task-list/
 * Executar o comando 'npm install'
 * Aguardar o término da instalação das dependências
@@ -41,12 +43,14 @@ Para que a aplicação funcione corretamente é necessário que a seguinte ordem
 
 Para isso iremos executar os seguintes comandos:
 
-* API
+API
+
 * Acessar o terminal / prompt de comandos no diretório /api-my-task-list/
 * Executar o comando 'npm start'
 * Aguardar a inicialização e verificar que a seguinte mensagem é mostrada no log 'Servidor Escutando na Porta 3000'
 
-* Aplicação 'Minha Lista de Tarefas'
+Aplicação 'Minha Lista de Tarefas'
+
 * Acessar o terminal / prompt de comandos no diretório /my-task-list/
 * Executar o comando 'ng serve --open'
 * Aguardar inicialização e verificar que o navegador padrão será aberto com a página de login ou página inicial da aplicação (dependendo da configuração de Lembrar Login)
